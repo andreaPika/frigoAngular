@@ -1,0 +1,64 @@
+{
+  "home":
+  {
+    "login": "Login",
+    "home":"Benvenuti nella nostra piattaforma",
+    "account": "Accedi alla tua dashboard"
+  },
+    "login":
+    {
+      "title": "Login",
+      "email": "email",
+      "password": "password",
+      "register": "Registrati qui",
+      "submit": "Invia",
+      "account": "Non hai un accuont?",
+      "accountCompany": "Non hai un accuont Aziendale?"
+    },
+
+    "register":
+    {
+      "title": "Registrazione",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "email",
+      "password": "password",
+      "submit": "Invia",
+      "account": "Hai già un account?",
+      "login": "fai login"
+    },
+
+  "nav":
+  {
+    "title": "Gestione Anagrafica",
+    "menu": "Menu",
+    "login": "Login",
+    "page": "Pagina Iniziale",
+    "dashboard": "Dashboard",
+    "companyRegistration": "Registrazione Azienda",
+    "companyList":"Lista Azienda",
+    "userList": "Lista utenti",
+    "search": "Ricerca",
+    "booking": "Prenotazione",
+    "profile": "Gestione Profilo",
+    "logout": "Logout"
+  },
+  "dashboard":
+  {
+    "welcome": "Benvenuto",
+    "overview": "Pannello di controllo",
+    "logout": "Logout"
+  },
+  "companyList":
+  {
+    "title": "Elenco delle Aziende"
+  },
+  "userList":
+  {
+    "title": "Elenco degli Utenti"
+  },
+  "booking":
+  {
+    "title": "Prenotazioni"
+  }
+}
