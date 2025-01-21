@@ -4,8 +4,6 @@ body {
   background: linear-gradient(135deg, #eceff1, #90a4ae);
   margin: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
 }
 
@@ -15,7 +13,6 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 400px;
   padding: 20px;
 }
 
