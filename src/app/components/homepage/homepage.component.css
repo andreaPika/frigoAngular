@@ -1,10 +1,81 @@
- h1 {
-        font-size: 3rem;
-        color: #007bff;
-      }
-p {
-        font-size: 1.2rem;
-      }
+/* Stile generale per il layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Stile per il titolo principale */
+h1 {
+  font-size: 3rem;
+  color: #007bff; /* Colore principale */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Paragrafo descrittivo */
+p.lead {
+  font-size: 1.25rem;
+  color: #6c757d; /* Colore neutro */
+  margin-bottom: 30px;
+}
+
+/* Pulsanti */
+.btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #565e64;
+}
+
+/* Lista delle funzionalità */
+.list-group {
+  margin-top: 20px;
+  text-align: left;
+}
+
 .list-group-item {
-        font-size: 1rem;
-      }
+  font-size: 1.1rem;
+  padding: 15px 10px;
+  border: none;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  p.lead {
+    font-size: 1rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+}
