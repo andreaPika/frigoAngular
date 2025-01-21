@@ -12,7 +12,8 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'angular-gestione-frigo';
-  constructor(private translate: TranslateService) {
+
+   constructor(private translate: TranslateService) {
     this.translate.setDefaultLang('it');
   }
 
