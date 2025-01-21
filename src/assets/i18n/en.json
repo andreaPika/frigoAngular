@@ -26,7 +26,7 @@
     "PASSWORD": "Password",
     "CONFIRM_PASSWORD": "Confirm Password",
     "PLACEHOLDER_FIRSTNAME": "Enter your name",
-    "PLACEHOLDER_LASTTNAME": "Enter your surname",
+    "PLACEHOLDER_LASTNAME": "Enter your surname",
     "PLACEHOLDER_EMAIL": "Enter your email",
     "PLACEHOLDER_PASSWORD": "Enter your password",
     "PLACEHOLDER_CONFIRM_PASSWORD": "Confirm your password",
