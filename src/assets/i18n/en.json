@@ -17,5 +17,22 @@
     "NO_ACCOUNT": "Don't have an account?",
     "REGISTER": "Register here",
     "ERROR": "Login failed. Please try again."
+  },
+  "REGISTER": {
+    "TITLE": "Register",
+    "FIRSTNAME": "Name",
+    "LASTNAME": "Surname",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "PLACEHOLDER_FIRSTNAME": "Enter your name",
+    "PLACEHOLDER_LASTTNAME": "Enter your surname",
+    "PLACEHOLDER_EMAIL": "Enter your email",
+    "PLACEHOLDER_PASSWORD": "Enter your password",
+    "PLACEHOLDER_CONFIRM_PASSWORD": "Confirm your password",
+    "BUTTON": "Register",
+    "LOADING": "Registering...",
+    "ALREADY_ACCOUNT": "Already have an account?",
+    "LOGIN": "Login here"
   }
 }

@@ -17,5 +17,22 @@
     "NO_ACCOUNT": "Non hai un account?",
     "REGISTER": "Registrati qui",
     "ERROR": "Accesso fallito. Riprova."
+  },
+  "REGISTER": {
+    "TITLE": "Registrati",
+    "FIRSTNAME": "Nome",
+    "LASTNAME": "Cognome",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CONFIRM_PASSWORD": "Conferma Password",
+    "PLACEHOLDER_FIRSTNAME": "Inserisci il tuo nome",
+    "PLACEHOLDER_LASTTNAME": "Inserisci il tuo nome",
+    "PLACEHOLDER_EMAIL": "Inserisci la tua email",
+    "PLACEHOLDER_PASSWORD": "Inserisci la tua password",
+    "PLACEHOLDER_CONFIRM_PASSWORD": "Conferma la tua password",
+    "BUTTON": "Registrati",
+    "LOADING": "Registrazione in corso...",
+    "ALREADY_ACCOUNT": "Hai già un account?",
+    "LOGIN": "Accedi qui"
   }
 }

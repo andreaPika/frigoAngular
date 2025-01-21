@@ -1,1 +1,62 @@
-<p>register works!</p>
+<div class="register-container">
+  <div class="register-box">
+    <h1>{{ 'REGISTER.TITLE' | translate }}</h1>
+    <form (ngSubmit)="register()">
+      <div class="form-group">
+        <label for="firstName">{{ 'REGISTER.FIRSTNAME' | translate }}</label>
+        <input
+          type="text"
+          id="firstName"
+          [(ngModel)]="firstName"
+          name="firstName"
+          class="form-control"
+          placeholder="{{ 'REGISTER.PLACEHOLDER_FIRSTNAME' | translate }}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="lastName">{{ 'REGISTER.LASTNAME' | translate }}</label>
+        <input
+          type="text"
+          id="lastName"
+          [(ngModel)]="lastName"
+          name="lastName"
+          class="form-control"
+          placeholder="{{ 'REGISTER.PLACEHOLDER_LASTNAME' | translate }}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">{{ 'REGISTER.EMAIL' | translate }}</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          class="form-control"
+          placeholder="{{ 'REGISTER.PLACEHOLDER_EMAIL' | translate }}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">{{ 'REGISTER.PASSWORD' | translate }}</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          class="form-control"
+          placeholder="{{ 'REGISTER.PLACEHOLDER_PASSWORD' | translate }}"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" >
+        {{ ('REGISTER.BUTTON' | translate) }}
+      </button>
+      <p class="login-link">
+        {{ 'REGISTER.ALREADY_ACCOUNT' | translate }}
+        <a routerLink="/login">{{ 'REGISTER.LOGIN' | translate }}</a>
+      </p>
+    </form>
+  </div>
+</div>

@@ -39,14 +39,13 @@ export class AuthService {
 
   }
 
-  register(firstName: string, lastName: string, email: string, password: string, role: string, companyId: string) {
+  register(firstName: string, lastName: string, email: string, password: string, role: string) {
     const user = {
       firstName,
       lastName,
       email,
       password,
-      role,
-      companyId
+      role
     };
     return this.http.post(`${environment.apiBaseUrl}/api/auth/register`, user);
   }
