@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-box">
+    <h1>{{ 'LOGIN.TITLE' | translate }}</h1>
+    <form (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="email">{{ 'LOGIN.EMAIL' | translate }}</label>
+        <input
+          type="email"
+          id="email"
+          [(ngModel)]="email"
+          name="email"
+          class="form-control"
+          placeholder="{{ 'LOGIN.PLACEHOLDER_EMAIL' | translate }}"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">{{ 'LOGIN.PASSWORD' | translate }}</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          class="form-control"
+          placeholder="{{ 'LOGIN.PLACEHOLDER_PASSWORD' | translate }}"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" >
+        {{ ('LOGIN.BUTTON' | translate) }}
+      </button>
+      <p class="register-link">
+        {{ 'LOGIN.NO_ACCOUNT' | translate }}
+        <a routerLink="/register">{{ 'LOGIN.REGISTER' | translate }}</a>
+      </p>
+    </form>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>

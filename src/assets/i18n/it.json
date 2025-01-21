@@ -5,5 +5,17 @@
     "ABOUT": "Chi Siamo",
     "LANGUAGE": "Lingua",
     "FREEZER": "Gestione Frigorifero"
+  },
+  "LOGIN": {
+    "TITLE": "Accesso",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "PLACEHOLDER_EMAIL": "Inserisci la tua email",
+    "PLACEHOLDER_PASSWORD": "Inserisci la tua password",
+    "BUTTON": "Accedi",
+    "LOADING": "Accesso in corso...",
+    "NO_ACCOUNT": "Non hai un account?",
+    "REGISTER": "Registrati qui",
+    "ERROR": "Accesso fallito. Riprova."
   }
 }

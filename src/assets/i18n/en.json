@@ -5,5 +5,17 @@
     "ABOUT": "About Us",
     "LANGUAGE": "Language",
     "FREEZER": "Management Freeze"
+  },
+  "LOGIN": {
+    "TITLE": "Login",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "PLACEHOLDER_EMAIL": "Enter your email",
+    "PLACEHOLDER_PASSWORD": "Enter your password",
+    "BUTTON": "Login",
+    "LOADING": "Logging in...",
+    "NO_ACCOUNT": "Don't have an account?",
+    "REGISTER": "Register here",
+    "ERROR": "Login failed. Please try again."
   }
 }
