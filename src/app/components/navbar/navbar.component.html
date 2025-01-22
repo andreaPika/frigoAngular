@@ -17,8 +17,11 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/home">{{ 'NAV.HOME' | translate }}</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isAuthenticated" class="nav-item">
           <a class="nav-link" routerLink="/products">{{ 'NAV.PRODUCTS' | translate }}</a>
+        </li>
+        <li *ngIf="isAuthenticated" class="nav-item">
+          <a class="nav-link" routerLink="/product-insert">{{ 'NAV.PRODUCTINSERT' | translate }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/about">{{ 'NAV.ABOUT' | translate }}</a>

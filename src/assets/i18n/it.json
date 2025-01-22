@@ -2,6 +2,7 @@
   "NAV": {
     "HOME": "Home",
     "PRODUCTS": "Prodotti",
+    "PRODUCTINSERT": "Inserisci prodotti",
     "ABOUT": "Chi Siamo",
     "LANGUAGE": "Lingua",
     "FREEZER": "Gestione Frigorifero"
@@ -34,5 +35,24 @@
     "LOADING": "Registrazione in corso...",
     "ALREADY_ACCOUNT": "Hai già un account?",
     "LOGIN": "Accedi qui"
+  },
+  "PRODUCT": {
+    "TITLE": "Aggiungi un Prodotto",
+    "NAME": "Nome Prodotto",
+    "CATEGORY": "Categoria",
+    "QUANTITY": "Quantità",
+    "EXPIRY_DATE": "Data di Scadenza",
+    "POSITION": "Posizione nel Frigo",
+    "BUTTON": "Aggiungi Prodotto",
+    "PLACEHOLDER_NAME": "Inserisci il nome del prodotto",
+    "PLACEHOLDER_QUANTITY": "Inserisci la quantità",
+    "PLACEHOLDER_POSITION": "Inserisci la posizione nel frigo"
+  },
+  "DASHBOARD": {
+    "TITLE": "Pannello di Controllo",
+    "TOTAL_PRODUCTS": "Prodotti Totali",
+    "TOTAL_CATEGORIES": "Categorie Totali",
+    "TOTAL_POSITIONS": "Posizioni Totali",
+    "RECENT_PRODUCTS": "Prodotti Recenti"
   }
 }

@@ -1,0 +1,34 @@
+<div class="dashboard-container">
+  <h1>{{ 'DASHBOARD.TITLE' | translate }}</h1>
+
+  <!-- Sezioni Dashboard -->
+  <div class="dashboard-cards">
+    <!-- Card: Numero di Prodotti -->
+    <div class="card">
+      <h2>{{ 'DASHBOARD.TOTAL_PRODUCTS' | translate }}</h2>
+      <p>{{ totalProducts }}</p>
+    </div>
+
+    <!-- Card: Numero di Categorie -->
+    <div class="card">
+      <h2>{{ 'DASHBOARD.TOTAL_CATEGORIES' | translate }}</h2>
+      <p>{{ totalCategories }}</p>
+    </div>
+
+    <!-- Card: Posizioni Occupate -->
+    <div class="card">
+      <h2>{{ 'DASHBOARD.TOTAL_POSITIONS' | translate }}</h2>
+      <p>{{ totalPositions }}</p>
+    </div>
+  </div>
+
+  <!-- Lista dei Prodotti -->
+  <div class="product-list">
+    <h2>{{ 'DASHBOARD.RECENT_PRODUCTS' | translate }}</h2>
+    <ul>
+      <li *ngFor="let product of recentProducts">
+        {{ product.name }} - {{ product.category }} ({{ product.quantity }})
+      </li>
+    </ul>
+  </div>
+</div>

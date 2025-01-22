@@ -2,6 +2,7 @@
   "NAV": {
     "HOME": "Home",
     "PRODUCTS": "Products",
+    "PRODUCTINSERT": "Insert products",
     "ABOUT": "About Us",
     "LANGUAGE": "Language",
     "FREEZER": "Management Freeze"
@@ -34,5 +35,24 @@
     "LOADING": "Registering...",
     "ALREADY_ACCOUNT": "Already have an account?",
     "LOGIN": "Login here"
+  },
+  "PRODUCT": {
+    "TITLE": "Add a Product",
+    "NAME": "Product Name",
+    "CATEGORY": "Category",
+    "QUANTITY": "Quantity",
+    "EXPIRY_DATE": "Expiry Date",
+    "POSITION": "Fridge Position",
+    "BUTTON": "Add Product",
+    "PLACEHOLDER_NAME": "Enter product name",
+    "PLACEHOLDER_QUANTITY": "Enter quantity",
+    "PLACEHOLDER_POSITION": "Enter fridge position"
+  },
+  "DASHBOARD": {
+    "TITLE": "Dashboard",
+    "TOTAL_PRODUCTS": "Total Products",
+    "TOTAL_CATEGORIES": "Total Categories",
+    "TOTAL_POSITIONS": "Total Positions",
+    "RECENT_PRODUCTS": "Recent Products"
   }
 }

@@ -31,7 +31,7 @@ export class RegisterComponent {
       return;
     }
 
-    this.authService.register(this.firstName, this.lastName, this.email, this.password, 'users').subscribe(
+    this.authService.register(this.firstName, this.lastName, this.email, this.password, 'admin').subscribe(
       (response) => {
         console.log('Registrazione completata:', response);
         alert('Utente registrato con successo!');
