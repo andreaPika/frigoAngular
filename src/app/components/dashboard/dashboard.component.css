@@ -36,28 +36,23 @@ h1 {
   font-weight: bold;
 }
 
-.product-list {
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.table td {
+  padding: 10px;
+  border: 1px solid #ddd;
 }
 
-.product-list h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
+.table .expiry-green {
+  color: #155724;
+  background-color: #d4edda;
 }
 
-.product-list ul {
-  list-style: none;
-  padding: 0;
+.table .expiry-yellow {
+  color: #856404;
+  background-color: #fff3cd;
 }
 
-.product-list li {
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd;
+.table .expiry-red {
+  color: #721c24;
+  background-color: #f8d7da;
 }
 
-.product-list li:last-child {
-  border-bottom: none;
-}

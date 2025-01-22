@@ -15,6 +15,7 @@ export class NavbarComponent {
   isAuthenticated: boolean = false; // Stato di autenticazione dell'utente
     userRole: string = ''; // Ruolo dell'utente
     currentRoute: string = '';
+    isLoggedIn = false;
 
   constructor(private authService: AuthService, private router: Router, private translateService:TranslateService) {}
 
@@ -22,6 +23,7 @@ export class NavbarComponent {
     this.authService.isAuthenticated$.subscribe((authStatus) => {
       console.log('Auth Status Updated:', authStatus);
       this.isAuthenticated = authStatus;
+      this.isLoggedIn = true;
       if (this.isAuthenticated) {
         this.userRole = this.authService.getUserRole(); // Ottieni il ruolo dell'utente
       }
@@ -31,6 +33,7 @@ export class NavbarComponent {
   // Funzione di logout
   logout(): void {
     this.authService.logout();// Chiama il metodo logout nel servizio
+    this.isLoggedIn = false;
     this.router.navigate(['/login']);  // Reindirizza alla pagina di login
   }
 

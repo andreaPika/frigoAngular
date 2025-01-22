@@ -26,7 +26,7 @@ constructor(
     category: ['', Validators.required],
     quantity: [0, [Validators.required, Validators.min(1)]],
     expiryDate: ['', Validators.required],
-    position: ['', Validators.required],
+    fridgePosition: ['', Validators.required],
   });
 }
 

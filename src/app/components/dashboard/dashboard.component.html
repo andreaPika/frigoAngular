@@ -23,12 +23,28 @@
   </div>
 
   <!-- Lista dei Prodotti -->
-  <div class="product-list">
+  <div class="product-table">
     <h2>{{ 'DASHBOARD.RECENT_PRODUCTS' | translate }}</h2>
-    <ul>
-      <li *ngFor="let product of recentProducts">
-        {{ product.name }} - {{ product.category.name }} - {{ product.position.name }} - Q: {{ product.quantity }}
-      </li>
-    </ul>
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th>{{ 'PRODUCT.NAME' | translate }}</th>
+        <th>{{ 'PRODUCT.CATEGORY' | translate }}</th>
+        <th>{{ 'PRODUCT.POSITION' | translate }}</th>
+        <th>{{ 'PRODUCT.QUANTITY' | translate }}</th>
+        <th>{{ 'PRODUCT.EXPIRY_DATE' | translate }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of recentProducts">
+        <td>{{ product.name }}</td>
+        <td>{{ product.category?.name }}</td>
+        <td>{{ product.fridgePosition?.name }}</td>
+        <td>{{ product.quantity }}</td>
+        <td [ngClass]="getExpiryClass(product.expiryDate)">
+          {{ product.expiryDate | date: 'dd/MM/yyyy' }}
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
-</div>

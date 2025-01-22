@@ -1,6 +1,8 @@
 {
   "NAV": {
     "HOME": "Home",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
     "PRODUCTS": "Products",
     "PRODUCTINSERT": "Insert products",
     "ABOUT": "About Us",

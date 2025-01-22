@@ -1,6 +1,8 @@
 {
   "NAV": {
     "HOME": "Home",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
     "PRODUCTS": "Prodotti",
     "PRODUCTINSERT": "Inserisci prodotti",
     "ABOUT": "Chi Siamo",
