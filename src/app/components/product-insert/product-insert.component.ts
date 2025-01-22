@@ -3,47 +3,64 @@ import { FridgeDataService } from '../../services/fridge-data.service';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-insert',
-  imports: [TranslateModule, RouterModule, CommonModule, FormsModule],
+  imports: [TranslateModule, RouterModule, CommonModule, ReactiveFormsModule],
   templateUrl: './product-insert.component.html',
   styleUrls: ['./product-insert.component.css'],
 })
 export class ProductInsertComponent implements OnInit {
-  product = {
-    name: '',
-    category: '',
-    quantity: 0,
-    expiryDate: '',
-    position: '',
-  };
+productForm: FormGroup;
+categories: any[] = [];
+fridgePositions: any[] = [];
 
-  categories: any[] = [];
-  fridgePositions: any[] = [];
+constructor(
+  private fb: FormBuilder,
+  private fridgeDataService: FridgeDataService
+) {
+  this.productForm = this.fb.group({
+    name: ['', Validators.required],
+    category: ['', Validators.required],
+    quantity: [0, [Validators.required, Validators.min(1)]],
+    expiryDate: ['', Validators.required],
+    position: ['', Validators.required],
+  });
+}
 
-  constructor(private fridgeDataService: FridgeDataService) {}
+ngOnInit(): void {
+  this.loadCategories();
+  this.loadFridgePositions();
+}
 
-  ngOnInit(): void {
-    this.loadCategories();
-    this.loadFridgePositions();
-  }
+loadCategories(): void {
+  this.fridgeDataService.getCategories().subscribe((data) => {
+    this.categories = data;
+  });
+}
 
-  loadCategories(): void {
-    this.fridgeDataService.getCategories().subscribe((data) => {
-      this.categories = data;
+loadFridgePositions(): void {
+  this.fridgeDataService.getFridgePositions().subscribe((data) => {
+    this.fridgePositions = data;
+  });
+}
+
+onSubmit(): void {
+  if (this.productForm.valid) {
+    this.fridgeDataService.saveProduct(this.productForm.value).subscribe({
+      next: (response) => {
+        console.log('Product saved successfully:', response);
+        this.productForm.reset();
+      },
+      error: (err) => {
+        console.error('Error saving product:', err);
+      },
     });
+  } else {
+    console.error('Form is invalid');
   }
+}
 
-  loadFridgePositions(): void {
-    this.fridgeDataService.getFridgePositions().subscribe((data) => {
-      this.fridgePositions = data;
-    });
-  }
-
-  onSubmit(): void {
-    console.log('Product submitted:', this.product);
-    // Aggiungi qui la logica per salvare il prodotto
-  }
 }

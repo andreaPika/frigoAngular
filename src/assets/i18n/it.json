@@ -37,16 +37,13 @@
     "LOGIN": "Accedi qui"
   },
   "PRODUCT": {
-    "TITLE": "Aggiungi un Prodotto",
-    "NAME": "Nome Prodotto",
+    "NAME": "Nome",
     "CATEGORY": "Categoria",
     "QUANTITY": "Quantità",
     "EXPIRY_DATE": "Data di Scadenza",
-    "POSITION": "Posizione nel Frigo",
-    "BUTTON": "Aggiungi Prodotto",
-    "PLACEHOLDER_NAME": "Inserisci il nome del prodotto",
-    "PLACEHOLDER_QUANTITY": "Inserisci la quantità",
-    "PLACEHOLDER_POSITION": "Inserisci la posizione nel frigo"
+    "POSITION": "Posizione",
+    "SAVE": "Salva",
+    "NAME_REQUIRED": "Il nome è obbligatorio."
   },
   "DASHBOARD": {
     "TITLE": "Pannello di Controllo",

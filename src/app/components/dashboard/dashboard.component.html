@@ -27,7 +27,7 @@
     <h2>{{ 'DASHBOARD.RECENT_PRODUCTS' | translate }}</h2>
     <ul>
       <li *ngFor="let product of recentProducts">
-        {{ product.name }} - {{ product.category }} ({{ product.quantity }})
+        {{ product.name }} - {{ product.category.name }} - {{ product.position.name }} - Q: {{ product.quantity }}
       </li>
     </ul>
   </div>

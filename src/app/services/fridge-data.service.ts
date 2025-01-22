@@ -12,15 +12,44 @@ export class FridgeDataService {
 
   // Ottieni le categorie
   getCategories(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiBaseUrl}/categories`);
+  const token = localStorage.getItem('auth_token'); // Recupera il token JWT
+
+            const headers = new HttpHeaders({
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            });
+    return this.http.get<any[]>(`${environment.apiBaseUrl}/api/product/categories`, { headers });
   }
 
   // Ottieni le posizioni del frigo
   getFridgePositions(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiBaseUrl}/fridge-positions`);
+  const token = localStorage.getItem('auth_token'); // Recupera il token JWT
+
+              const headers = new HttpHeaders({
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+              });
+    return this.http.get<any[]>(`${environment.apiBaseUrl}/api/product/fridge-positions`, { headers });
   }
 
   getProducts(): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.apiBaseUrl}/products`);
+  const token = localStorage.getItem('auth_token'); // Recupera il token JWT
+
+              const headers = new HttpHeaders({
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+              });
+    return this.http.get<any[]>(`${environment.apiBaseUrl}/api/product`, { headers });
   }
+
+  // Metodo per salvare un prodotto
+    saveProduct(product: any): Observable<any> {
+    const token = localStorage.getItem('auth_token'); // Recupera il token JWT
+
+                const headers = new HttpHeaders({
+                  'Authorization': `Bearer ${token}`,
+                  'Content-Type': 'application/json',
+                });
+      return this.http.post<any>(`${environment.apiBaseUrl}/api/product`, product, { headers });
+    }
 }
