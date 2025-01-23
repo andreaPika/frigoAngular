@@ -52,4 +52,15 @@ export class FridgeDataService {
                 });
       return this.http.post<any>(`${environment.apiBaseUrl}/api/product`, product, { headers });
     }
+
+    // Aggiorna la quantità di un prodotto
+      updateProductQuantity(productId: string, quantity: number): Observable<any> {
+      const token = localStorage.getItem('auth_token'); // Recupera il token JWT
+
+                      const headers = new HttpHeaders({
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                      });
+        return this.http.put(`${environment.apiBaseUrl}/api/product/qnt/${productId}`, { quantity }, { headers });
+      }
 }

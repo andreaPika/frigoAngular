@@ -3,10 +3,11 @@ import { FridgeDataService } from '../../services/fridge-data.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [TranslateModule, RouterModule, CommonModule],
+  imports: [TranslateModule, RouterModule, CommonModule, FormsModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
@@ -55,4 +56,21 @@ export class DashboardComponent implements OnInit {
         return 'expiry-red'; // Meno di 2 giorni o scaduto
       }
     }
+    // Aggiorna la quantità di un prodotto
+      updateQuantity(product: any): void {
+        if (!this.isQuantityValid(product.quantity)) {
+          alert('Quantità non valida!');
+          return;
+        }
+
+        this.fridgeDataService.updateProductQuantity(product._id, product.quantity).subscribe({
+          next: () => alert('Quantità aggiornata con successo!'),
+          error: (err: any) => alert('Errore durante l\'aggiornamento della quantità!') // Tipo esplicito
+        });
+      }
+
+      // Verifica se la quantità è valida
+      isQuantityValid(quantity: number): boolean {
+        return quantity >= 0;
+      }
 }

@@ -31,8 +31,9 @@
         <th>{{ 'PRODUCT.NAME' | translate }}</th>
         <th>{{ 'PRODUCT.CATEGORY' | translate }}</th>
         <th>{{ 'PRODUCT.POSITION' | translate }}</th>
-        <th>{{ 'PRODUCT.QUANTITY' | translate }}</th>
         <th>{{ 'PRODUCT.EXPIRY_DATE' | translate }}</th>
+        <th>{{ 'PRODUCT.QUANTITY' | translate }}</th>
+        <th>{{ 'ACTIONS' | translate }}</th>
       </tr>
       </thead>
       <tbody>
@@ -40,9 +41,25 @@
         <td>{{ product.name }}</td>
         <td>{{ product.category?.name }}</td>
         <td>{{ product.fridgePosition?.name }}</td>
-        <td>{{ product.quantity }}</td>
         <td [ngClass]="getExpiryClass(product.expiryDate)">
           {{ product.expiryDate | date: 'dd/MM/yyyy' }}
+        </td>
+        <td>
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="product.quantity"
+            (blur)="updateQuantity(product)"
+            min="0"
+          />
+        </td>
+        <td>
+          <button
+            class="btn btn-success btn-sm"
+            (click)="updateQuantity(product)"
+            [disabled]="!isQuantityValid(product.quantity)">
+            {{ 'SAVE' | translate }}
+          </button>
         </td>
       </tr>
       </tbody>

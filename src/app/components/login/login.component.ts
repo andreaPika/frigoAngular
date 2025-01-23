@@ -28,7 +28,7 @@ export class LoginComponent {
       },
       error: (err) => {
         console.error('Errore durante il login:', err);
-        this.errorMessage = 'Credenziali non valide. Riprova.';
+        error: (err: any) => alert('Credenziali non valide. Riprova.') // Tipo esplicito
       }
     });
   }

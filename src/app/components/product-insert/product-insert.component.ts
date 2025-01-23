@@ -53,9 +53,11 @@ onSubmit(): void {
       next: (response) => {
         console.log('Product saved successfully:', response);
         this.productForm.reset();
+        alert('Prodosso salvato correttamente')
       },
       error: (err) => {
         console.error('Error saving product:', err);
+        error: (err: any) => alert('Errore durante Inserimento prodotti') // Tipo esplicito
       },
     });
   } else {
