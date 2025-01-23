@@ -42,6 +42,7 @@
     "NAME": "Nome",
     "CATEGORY": "Categoria",
     "QUANTITY": "Quantità",
+    "UNIT": "Unità",
     "EXPIRY_DATE": "Data di Scadenza",
     "POSITION": "Posizione",
     "SAVE": "Salva",

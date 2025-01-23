@@ -33,6 +33,7 @@
         <th>{{ 'PRODUCT.POSITION' | translate }}</th>
         <th>{{ 'PRODUCT.EXPIRY_DATE' | translate }}</th>
         <th>{{ 'PRODUCT.QUANTITY' | translate }}</th>
+        <th>{{ 'PRODUCT.UNIT' | translate }}</th>
         <th>{{ 'ACTIONS' | translate }}</th>
       </tr>
       </thead>
@@ -53,6 +54,10 @@
             min="0"
           />
         </td>
+        <td>
+          {{ product.unit }}
+        </td>
+
         <td>
           <button
             class="btn btn-success btn-sm"
