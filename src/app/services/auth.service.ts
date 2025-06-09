@@ -21,8 +21,16 @@ export class AuthService {
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<any>(null);
+    const storedUser = localStorage.getItem('user');
+    const isAuthenticated = !!localStorage.getItem('auth_token');
+
+    this.currentUserSubject = new BehaviorSubject<any>(
+      storedUser ? JSON.parse(storedUser) : null
+    );
     this.currentUser = this.currentUserSubject.asObservable();
+
+    this.isAuthenticatedSubject = new BehaviorSubject<boolean>(isAuthenticated);
+    this.isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
   }
 
   login(email: string, password: string): Observable<any> {

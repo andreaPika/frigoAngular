@@ -23,6 +23,9 @@
   </div>
 
   <!-- Lista dei Prodotti -->
+  <div *ngIf="quantityUpdated" class="alert alert-success" role="alert">
+    {{ 'PRODUCT.QUANTITY_UPDATED' | translate }}
+  </div>
   <div class="product-table">
     <h2>{{ 'DASHBOARD.RECENT_PRODUCTS' | translate }}</h2>
     <table class="table table-striped table-bordered">

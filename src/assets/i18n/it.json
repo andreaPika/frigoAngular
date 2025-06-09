@@ -48,7 +48,8 @@
     "SAVE": "Salva",
     "NAME_REQUIRED": "Il nome è obbligatorio.",
     "EXPIRED": "Prodotto scaduto",
-    "OUT_OF_STOCK": "Prodotto esaurito"
+    "OUT_OF_STOCK": "Prodotto esaurito",
+    "QUANTITY_UPDATED": "Quantita aggiornata"
   },
   "DASHBOARD": {
     "TITLE": "Pannello di Controllo",

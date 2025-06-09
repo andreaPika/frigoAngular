@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   totalCategories = 0;
   totalPositions = 0;
   recentProducts: any[] = [];
+  quantityUpdated: boolean = false;
 
   constructor(private fridgeDataService: FridgeDataService) {}
 
@@ -85,6 +86,11 @@ export class DashboardComponent implements OnInit {
       .updateQuantity(product.id, product.quantity)
       .subscribe({
         next: () => {
+              this.quantityUpdated = true;
+              setTimeout(() => {
+                    window.location.reload();
+                  }, 2000);
+
               product.savedQuantity = product.quantity; // blocchiamo input se 0
               console.log(`Quantità aggiornata per ${product.name} a ${product.quantity}`);
             },
