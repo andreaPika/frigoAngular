@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FridgeDataService } from '../../services/fridge-data.service';
-import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [TranslateModule, RouterModule, CommonModule, FormsModule],
+  // 👉  se vuoi un componente stand-alone, lascia `standalone: true`
+  //     altrimenti rimuovi `standalone` e `imports`
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule, TranslateModule],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
@@ -23,54 +26,71 @@ export class DashboardComponent implements OnInit {
     this.loadDashboardData();
   }
 
-  loadDashboardData(): void {
-    // Carica il numero totale di prodotti
+  /** ---------- CARICAMENTO DATI ---------- */
+  private loadDashboardData(): void {
+    /* Prodotti */
     this.fridgeDataService.getProducts().subscribe((products) => {
-    console.log(products);
       this.totalProducts = products.length;
-      this.recentProducts = products.slice(-5); // Ultimi 5 prodotti
+
+      /* Ultimi 5 prodotti + savedQuantity */
+      this.recentProducts = products
+        .slice(-5)
+        .map((p) => ({ ...p, savedQuantity: p.quantity, id: p._id }));
     });
 
-    // Carica il numero totale di categorie
-    this.fridgeDataService.getCategories().subscribe((categories) => {
-      this.totalCategories = categories.length;
-    });
+    /* Categorie */
+    this.fridgeDataService
+      .getCategories()
+      .subscribe((cat) => (this.totalCategories = cat.length));
 
-    // Carica il numero totale di posizioni occupate
-    this.fridgeDataService.getFridgePositions().subscribe((fridgePositions) => {
-      this.totalPositions = fridgePositions.length;
-    });
+    /* Posizioni */
+    this.fridgeDataService
+      .getFridgePositions()
+      .subscribe((pos) => (this.totalPositions = pos.length));
   }
 
-  getExpiryClass(expiryDate: string | Date): string {
-      const today = new Date();
-      const date = new Date(expiryDate);
+  /** ---------- UTILITIES ---------- */
+  isExpired(expiryDate: Date | string): boolean {
+    const today = new Date();
+    return new Date(expiryDate) < today;
+  }
 
-      const diffInDays = Math.ceil((date.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
-
-      if (diffInDays > 7) {
-        return 'expiry-green'; // Più di una settimana
-      } else if (diffInDays <= 7 && diffInDays > 2) {
-        return 'expiry-yellow'; // Da 2 a 7 giorni
-      } else {
-        return 'expiry-red'; // Meno di 2 giorni o scaduto
+  getExpiryClass(expiryDate: Date | string, product: any): string {
+    if (product.savedQuantity === 0 || this.isExpired(expiryDate)) {
+        return ''; // Niente classe (nessun colore) se esaurito o scaduto
       }
+
+    const today = new Date();
+    const date = new Date(expiryDate);
+    const diffInDays = Math.ceil(
+      (date.getTime() - today.getTime()) / (1000 * 60 * 60 * 24)
+    );
+
+    if (diffInDays > 7) {
+      return 'expiry-green';
+    } else if (diffInDays > 2) {
+      return 'expiry-yellow';
+    } else {
+      return 'expiry-red';
     }
-    // Aggiorna la quantità di un prodotto
-      updateQuantity(product: any): void {
-        if (!this.isQuantityValid(product.quantity)) {
-          alert('Quantità non valida!');
-          return;
-        }
+  }
 
-        this.fridgeDataService.updateProductQuantity(product._id, product.quantity).subscribe({
-          next: () => alert('Quantità aggiornata con successo!'),
-          error: (err: any) => alert('Errore durante l\'aggiornamento della quantità!') // Tipo esplicito
-        });
-      }
+  /** ---------- AGGIORNA QUANTITÀ ---------- */
+  updateQuantity(product: any): void {
+    if (product.quantity < 0) {
+      product.quantity = 0;
+     }
 
-      // Verifica se la quantità è valida
-      isQuantityValid(quantity: number): boolean {
-        return quantity >= 0;
-      }
+    this.fridgeDataService
+      .updateQuantity(product.id, product.quantity)
+      .subscribe({
+        next: () => {
+              product.savedQuantity = product.quantity; // blocchiamo input se 0
+              console.log(`Quantità aggiornata per ${product.name} a ${product.quantity}`);
+            },
+            error: (err) => {
+              console.error(`Errore aggiornando ${product.name}:`, err);
+            }
+      });
+  }
 }

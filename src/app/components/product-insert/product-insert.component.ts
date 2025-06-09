@@ -16,7 +16,7 @@ export class ProductInsertComponent implements OnInit {
 productForm: FormGroup;
 categories: any[] = [];
 fridgePositions: any[] = [];
-units = ['kg', 'g', 'pcs', 'l', 'ml']; // Unità di misura disponibili
+units = ['kg', 'g', 'pcs', 'l', 'ml', 'Scatole', 'Pacchetti']; // Unità di misura disponibili
 
 constructor(
   private fb: FormBuilder,

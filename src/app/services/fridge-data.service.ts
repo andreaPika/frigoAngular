@@ -54,7 +54,7 @@ export class FridgeDataService {
     }
 
     // Aggiorna la quantità di un prodotto
-      updateProductQuantity(productId: string, quantity: number): Observable<any> {
+      updateQuantity(productId: string, quantity: number): Observable<any> {
       const token = localStorage.getItem('auth_token'); // Recupera il token JWT
 
                       const headers = new HttpHeaders({

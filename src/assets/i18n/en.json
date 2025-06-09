@@ -7,7 +7,7 @@
     "PRODUCTINSERT": "Insert products",
     "ABOUT": "About Us",
     "LANGUAGE": "Language",
-    "FREEZER": "Management Freeze"
+    "FREEZER": "Management"
   },
   "LOGIN": {
     "TITLE": "Login",
@@ -46,7 +46,9 @@
     "EXPIRY_DATE": "Expiry Date",
     "POSITION": "Position",
     "SAVE": "Save",
-    "NAME_REQUIRED": "Name is required."
+    "NAME_REQUIRED": "Name is required.",
+    "EXPIRED": "Product Expired",
+    "OUT_OF_STOCK": "Product out of stock"
   },
   "DASHBOARD": {
     "TITLE": "Dashboard",

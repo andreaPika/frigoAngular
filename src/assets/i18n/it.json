@@ -7,7 +7,7 @@
     "PRODUCTINSERT": "Inserisci prodotti",
     "ABOUT": "Chi Siamo",
     "LANGUAGE": "Lingua",
-    "FREEZER": "Gestione Frigorifero"
+    "FREEZER": "Gestione"
   },
   "LOGIN": {
     "TITLE": "Accesso",
@@ -46,7 +46,9 @@
     "EXPIRY_DATE": "Data di Scadenza",
     "POSITION": "Posizione",
     "SAVE": "Salva",
-    "NAME_REQUIRED": "Il nome è obbligatorio."
+    "NAME_REQUIRED": "Il nome è obbligatorio.",
+    "EXPIRED": "Prodotto scaduto",
+    "OUT_OF_STOCK": "Prodotto esaurito"
   },
   "DASHBOARD": {
     "TITLE": "Pannello di Controllo",
