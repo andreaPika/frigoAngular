@@ -45,11 +45,11 @@
     "UNIT": "Unit",
     "EXPIRY_DATE": "Expiry Date",
     "POSITION": "Position",
-    "SAVE": "Save",
     "NAME_REQUIRED": "Name is required.",
     "EXPIRED": "Product Expired",
     "OUT_OF_STOCK": "Product out of stock",
-    "QUANTITY_UPDATED": "Update Quantity"
+    "QUANTITY_UPDATED": "Quantity Updated",
+    "SAVE": "Update quantity"
   },
   "DASHBOARD": {
     "TITLE": "Dashboard",
