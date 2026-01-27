@@ -34,24 +34,17 @@
         <th>{{ 'PRODUCT.NAME' | translate }}</th>
         <th>{{ 'PRODUCT.CATEGORY' | translate }}</th>
         <th>{{ 'PRODUCT.POSITION' | translate }}</th>
-        <th>{{ 'PRODUCT.EXPIRY_DATE' | translate }}</th>
-        <th>{{ 'PRODUCT.QUANTITY' | translate }}</th>
         <th>{{ 'PRODUCT.UNIT' | translate }}</th>
+        <th>{{ 'PRODUCT.QUANTITY' | translate }}</th>
+        <th>{{ 'PRODUCT.EXPIRY_DATE' | translate }}</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let product of recentProducts">
         <td>{{ product.name }}</td>
         <td>{{ product.category?.name }}</td>
-        <td>{{ product.fridgePosition?.name }}</td>
-        <td [ngClass]="getExpiryClass(product.expiryDate, product)">
-          <ng-container *ngIf="!isExpired(product.expiryDate) && product.savedQuantity !== 0; else noDate">
-            {{ product.expiryDate | date: 'dd/MM/yyyy' }}
-          </ng-container>
-          <ng-template #noDate>
-            <!-- Vuoto, nessun testo -->
-          </ng-template>
-        </td>
+        <td>{{ product.fridgePosition?.name }} {{ product.fridgePosition?.description }}</td>
+        <td>{{ product.unit }}</td>
         <td>
           <ng-container *ngIf="!isExpired(product.expiryDate); else expired">
             <ng-container *ngIf="product.savedQuantity !== 0; else outOfStock">
@@ -72,11 +65,14 @@
               </div>
             </ng-container>
             <ng-template #outOfStock>
-              <span>{{ 'PRODUCT.OUT_OF_STOCK' | translate }}</span>
+              <span>{{ 'PRODUCT.OUT_OF_STOCK' | translate }}
+                  <button (click)="deleteProduct(product._id)">Elimina</button>
+               </span>
             </ng-template>
           </ng-container>
           <ng-template #expired>
-            <span>{{ 'PRODUCT.EXPIRED' | translate }}</span>
+            <span>{{ 'PRODUCT.EXPIRED' | translate }}
+              <button (click)="deleteProduct(product._id)">Elimina</button></span>
           </ng-template>
         </td>
         <td [ngClass]="getExpiryClass(product.expiryDate, product)">

@@ -16,6 +16,7 @@ export class ProductInsertComponent implements OnInit {
 productForm: FormGroup;
 categories: any[] = [];
 fridgePositions: any[] = [];
+products: any[] = [];
 units = ['kg', 'g', 'pcs', 'l', 'ml', 'Scatole', 'Pacchetti']; // Unità di misura disponibili
 
 constructor(
@@ -35,6 +36,7 @@ constructor(
 ngOnInit(): void {
   this.loadCategories();
   this.loadFridgePositions();
+  this.loadProducts();
 }
 
 loadCategories(): void {
@@ -48,6 +50,14 @@ loadFridgePositions(): void {
     this.fridgePositions = data;
   });
 }
+
+loadProducts(): void {
+    this.fridgeDataService.getProducts().subscribe((data) => {
+      this.products = data;
+    });
+  }
+
+
 
 onSubmit(): void {
   if (this.productForm.valid) {
@@ -67,4 +77,17 @@ onSubmit(): void {
   }
 }
 
+// Funzione opzionale per eliminare un prodotto
+  deleteProduct(id: string): void {
+    if (!id) return;
+    if (confirm('Sei sicuro di voler eliminare questo prodotto?')) {
+      this.fridgeDataService.deleteProduct(id).subscribe({
+        next: () => {
+          alert('Prodotto eliminato');
+          this.loadProducts(); // ricarica la lista
+        },
+        error: (err) => alert('Errore durante l\'eliminazione: ' + err.message),
+      });
+    }
+  }
 }

@@ -5,6 +5,8 @@
     "LOGOUT": "Logout",
     "PRODUCTS": "Products",
     "PRODUCTINSERT": "Insert products",
+    "CATEGORIESINSERT": "Insert categories",
+    "FRIDGEPOSITIONSINSERT": "Insert positions",
     "ABOUT": "About Us",
     "LANGUAGE": "Language",
     "FREEZER": "Management"

@@ -4,6 +4,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ProductInsertComponent } from './components/product-insert/product-insert.component';
+import { FridgePositionInsertComponent } from './components/fridge-position-insert/fridge-position-insert.component';
+import { CategoryInsertComponent } from './components/category-insert/category-insert.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './services/auth.guard';
 
@@ -12,6 +14,8 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'product-insert', component: ProductInsertComponent, canActivate: [AuthGuard] },
+  { path: 'category-insert', component: CategoryInsertComponent, canActivate: [AuthGuard] },
+  { path: 'fridge-position-insert', component: FridgePositionInsertComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 ];
 

@@ -1,3 +1,24 @@
+<table class="product-table" *ngIf="products.length > 0">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Azioni</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td>
+            <button (click)="deleteProduct(product._id)">Elimina</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<p *ngIf="products.length === 0">
+    Nessun prodotto disponibile.
+</p>
+
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
   <div class="form-group">
     <label for="name">{{ 'PRODUCT.NAME' | translate }}</label>
@@ -44,7 +65,7 @@
     <label for="fridgePosition">{{ 'PRODUCT.POSITION' | translate }}</label>
     <select id="fridgePosition" formControlName="fridgePosition" class="form-control">
       <option *ngFor="let fridgePosition of fridgePositions" [value]="fridgePosition._id">
-        {{ fridgePosition.name }}
+        {{ fridgePosition.name }} {{ fridgePosition.description }}
       </option>
     </select>
   </div>

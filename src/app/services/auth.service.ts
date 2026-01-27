@@ -21,8 +21,8 @@ export class AuthService {
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    const storedUser = localStorage.getItem('user');
-    const isAuthenticated = !!localStorage.getItem('auth_token');
+    const storedUser = sessionStorage.getItem('user');
+    const isAuthenticated = !!sessionStorage.getItem('auth_token');
 
     this.currentUserSubject = new BehaviorSubject<any>(
       storedUser ? JSON.parse(storedUser) : null
@@ -37,8 +37,8 @@ export class AuthService {
     return this.http.post<User>(`${environment.apiBaseUrl}/api/auth/login`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('user', JSON.stringify(user))
-                localStorage.setItem('auth_token', user?.user?.token!)
+                sessionStorage.setItem('user', JSON.stringify(user))
+                sessionStorage.setItem('auth_token', user?.user?.token!)
                 console.log('auth_token', user?.user?.token);
                 this.isAuthenticatedSubject.next(true);
                 this.currentUserSubject.next(user);
@@ -59,7 +59,7 @@ export class AuthService {
   }
 
   changePassword(userId: string, currentPassword: string, newPassword: string): Observable<any> {
-    const token = localStorage.getItem('auth_token'); // Recupera il token JWT dal LocalStorage
+    const token = sessionStorage.getItem('auth_token'); // Recupera il token JWT dal sessionStorage
 
       const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
@@ -74,7 +74,8 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
+  sessionStorage.removeItem('auth_token');
     this.isAuthenticatedSubject.next(false);
     this.currentUserSubject.next(null);
   }
@@ -89,26 +90,26 @@ export class AuthService {
 
   // Metodo per ottenere il token JWT
   getToken(): string | null {
-    // Recupera il token JWT salvato nel localStorage
-    return localStorage.getItem('auth_token');
+    // Recupera il token JWT salvato nel sessionStorage
+    return sessionStorage.getItem('auth_token');
   }
 
-  // Metodo per salvare il token JWT nel localStorage
+  // Metodo per salvare il token JWT nel sessionStorage
   saveToken(token: string): void {
-    localStorage.setItem('auth_token', token);  // Salva il token nel localStorage
+    sessionStorage.setItem('auth_token', token);  // Salva il token nel sessionStorage
   }
 
     // Metodo per recuperare i dati dell'utente autenticato
     getUserData(): any {
-        // Supponiamo che i dati dell'utente siano salvati nel localStorage
-        const userData = localStorage.getItem('user');
+        // Supponiamo che i dati dell'utente siano salvati nel sessionStorage
+        const userData = sessionStorage.getItem('user');
         return userData ? JSON.parse(userData) : null;  // Restituisce i dati dell'utente, o null se non esistono
       }
 
-        // Ottieni il ruolo dell'utente dal localStorage o da un altro posto
+        // Ottieni il ruolo dell'utente dal sessionStorage o da un altro posto
   getUserRole(): string {
-    // Supponiamo che il ruolo dell'utente venga salvato nel localStorage
-    const userData = JSON.parse(localStorage.getItem('user') || '{}');
+    // Supponiamo che il ruolo dell'utente venga salvato nel sessionStorage
+    const userData = JSON.parse(sessionStorage.getItem('user') || '{}');
     return userData.user?.role || '';  // Restituisci il ruolo dell'utente, se disponibile
   }
 }

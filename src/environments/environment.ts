@@ -5,7 +5,7 @@
 export const environment = {
   baseUrl: 'http://localhost:8080',
     production: false,
-    apiBaseUrl: 'http://localhost:5000'
+    apiBaseUrl: 'https://infofrigo.sytes.net'
 };
 
 /*

@@ -99,4 +99,18 @@ export class DashboardComponent implements OnInit {
             }
       });
   }
+
+// Funzione opzionale per eliminare un prodotto
+  deleteProduct(id: string): void {
+    if (!id) return;
+    if (confirm('Sei sicuro di voler eliminare questo prodotto?')) {
+      this.fridgeDataService.deleteProduct(id).subscribe({
+        next: () => {
+          alert('Prodotto eliminato');
+          this.loadDashboardData() // ricarica la lista
+        },
+        error: (err) => alert('Errore durante l\'eliminazione: ' + err.message),
+      });
+    }
+  }
 }
