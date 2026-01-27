@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FridgeDataService } from '../../services/fridge-data.service';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BrowserMultiFormatReader } from '@zxing/browser';
 
 @Component({
   selector: 'app-product-insert',
@@ -90,4 +91,5 @@ onSubmit(): void {
       });
     }
   }
+
 }

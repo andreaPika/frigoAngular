@@ -135,3 +135,12 @@
   color: #6c757d;
   font-size: 14px;
 }
+
+.barcode-row {
+  display: flex;
+  gap: 8px;
+}
+
+.scanner {
+  margin: 10px 0;
+}

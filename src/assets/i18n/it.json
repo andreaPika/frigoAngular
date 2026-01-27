@@ -42,6 +42,7 @@
   },
   "PRODUCT": {
     "NAME": "Nome",
+    "BARCODE": "Barcode",
     "CATEGORY": "Categoria",
     "QUANTITY": "Quantità",
     "UNIT": "Unità",

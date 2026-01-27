@@ -1,31 +1,5 @@
-<table class="fridge-position-table">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Azione</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let fridge of fridgePositions">
-        <td>{{ fridge.name }}</td>
-        <td>{{ fridge.description }}</td>
-    <td>
-        <button (click)="deletePosition(fridge._id)" class="delete-btn">
-            Elimina
-        </button>
-    </td>
-    </tr>
-    </tbody>
-</table>
-
-<p *ngIf="fridgePositions.length === 0" class="fridge-position-empty">
-    Nessuna posizione frigorifero disponibile.
-</p>
-
 <div class="fridge-position-form">
-    <h2>Nuova Posizione Frigo</h2>
-
+    <h2>Nuova Dispensa</h2>
 
     <form [formGroup]="positionForm" (ngSubmit)="onSubmit()">
 
@@ -48,3 +22,29 @@
 
     </form>
 </div>
+
+<table class="fridge-position-table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Azione</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let fridge of fridgePositions">
+        <td>{{ fridge.name }}</td>
+        <td>{{ fridge.description }}</td>
+        <td>
+            <button (click)="deletePosition(fridge._id)" class="delete-btn">
+                Elimina
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<p *ngIf="fridgePositions.length === 0" class="fridge-position-empty">
+    Nessuna posizione frigorifero disponibile.
+</p>
+
