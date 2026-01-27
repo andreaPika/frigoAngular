@@ -1,0 +1,50 @@
+<table class="fridge-position-table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Azione</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let fridge of fridgePositions">
+        <td>{{ fridge.name }}</td>
+        <td>{{ fridge.description }}</td>
+    <td>
+        <button (click)="deletePosition(fridge._id)" class="delete-btn">
+            Elimina
+        </button>
+    </td>
+    </tr>
+    </tbody>
+</table>
+
+<p *ngIf="fridgePositions.length === 0" class="fridge-position-empty">
+    Nessuna posizione frigorifero disponibile.
+</p>
+
+<div class="fridge-position-form">
+    <h2>Nuova Posizione Frigo</h2>
+
+
+    <form [formGroup]="positionForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="name">Nome</label>
+            <input id="name" type="text" formControlName="name" placeholder="Inserisci il nome della posizione">
+            <div class="error" *ngIf="positionForm.get('name')?.touched && positionForm.get('name')?.invalid">
+                Il nome è obbligatorio
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Descrizione</label>
+            <input id="description" type="text" formControlName="description" placeholder="Inserisci descrizione (opzionale)">
+        </div>
+
+        <button type="submit" [disabled]="positionForm.invalid">
+            Salva
+        </button>
+
+    </form>
+</div>

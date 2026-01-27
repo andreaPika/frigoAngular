@@ -1,0 +1,128 @@
+/* Form stile attuale */
+.category-form {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.category-form .form-group {
+  margin-bottom: 20px;
+}
+
+.category-form label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.category-form input,
+.category-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-form input:focus,
+.category-form textarea:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+  outline: none;
+}
+
+.category-form .error {
+  font-size: 12px;
+  color: #d9534f;
+  margin-top: 5px;
+}
+
+.category-form button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-form button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.category-form button:hover:not(:disabled) {
+  background-color: #218838;
+  box-shadow: 0 4px 10px rgba(33, 136, 56, 0.3);
+}
+
+/* Stile per la tabella delle categorie */
+.category-table {
+  width: 60%;
+  border-collapse: collapse;
+  margin: 30px auto;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+.category-table th,
+.category-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.category-table th {
+  background-color: #17a2b8;
+  color: #fff;
+  font-weight: 500;
+}
+
+.category-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.category-table tr:hover {
+  background-color: #e6f4ea;
+}
+
+.category-table td {
+  color: #333;
+}
+
+/* Pulsante elimina */
+.category-table button {
+  background-color: #dc3545;
+  color: #ffffff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-table button:hover {
+  background-color: #b02a37;
+  box-shadow: 0 3px 8px rgba(176, 42, 55, 0.3);
+}
+
+
+.category-empty {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #6c757d;
+}
