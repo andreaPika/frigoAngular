@@ -29,7 +29,13 @@ constructor(
     category: ['', Validators.required],
     quantity: [0, [Validators.required, Validators.min(1)]],
     expiryDate: ['', Validators.required],
-    unit: ['pcs', Validators.required], // Valore di default
+    unit: ['pcs', Validators.required],
+    barcode: ['',
+                    [
+                      Validators.required,
+                      Validators.minLength(8),
+                      Validators.maxLength(13)
+                    ]],
     fridgePosition: ['', Validators.required],
   });
 }

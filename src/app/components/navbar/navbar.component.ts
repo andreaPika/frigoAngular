@@ -23,7 +23,7 @@ export class NavbarComponent {
     this.authService.isAuthenticated$.subscribe((authStatus) => {
       console.log('Auth Status Updated:', authStatus);
       this.isAuthenticated = authStatus;
-      this.isLoggedIn = true;
+      this.isLoggedIn = authStatus;
       if (this.isAuthenticated) {
         this.userRole = this.authService.getUserRole(); // Ottieni il ruolo dell'utente
       }

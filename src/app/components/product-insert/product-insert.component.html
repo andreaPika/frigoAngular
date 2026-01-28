@@ -3,23 +3,22 @@
     <!-- BARCODE -->
     <div class="form-group">
         <label>Barcode</label>
-
         <div class="barcode-row">
-            <input
-                    type="text"
-                    formControlName="barcode"
-                    class="form-control"
-                    placeholder="Scansiona barcode"
-                    readonly
-            />
-
-            <button
-                    type="button"
-                    class="btn btn-secondary"
-            >
+            <input type="text" formControlName="barcode" class="form-control" placeholder="Scansiona barcode" minlength="8" maxlength="13"/>
+            <button type="button" class="btn btn-secondary">
                 📷 Scansiona
             </button>
+
         </div>
+        <small class="text-danger"
+               *ngIf="productForm.get('barcode')?.errors?.['minlength']">
+            Il barcode deve avere almeno 8 caratteri
+        </small>
+
+        <small class="text-danger"
+               *ngIf="productForm.get('barcode')?.errors?.['maxlength']">
+            Il barcode non può superare i 13 caratteri
+        </small>
     </div>
 
   <div class="form-group">
