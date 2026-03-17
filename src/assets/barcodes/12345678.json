@@ -1,0 +1,8 @@
+{
+  "name": "Latte Intero",
+  "category": "ID_CATEGORIA",
+  "quantity": 1,
+  "unit": "L",
+  "expiryDate": "2026-03-20",
+  "fridgePosition": "ID_POSIZIONE"
+}

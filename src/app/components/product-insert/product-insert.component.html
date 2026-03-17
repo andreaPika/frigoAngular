@@ -3,83 +3,89 @@
     <!-- BARCODE -->
     <div class="form-group">
         <label>Barcode</label>
+
         <div class="barcode-row">
-            <input type="text" formControlName="barcode" class="form-control" placeholder="Scansiona barcode" minlength="8" maxlength="13"/>
+            <input
+                    type="text"
+                    formControlName="barcode"
+                    class="form-control"
+                    placeholder="Scansiona o inserisci barcode"
+                    minlength="8"
+                    maxlength="13"
+                    autocomplete="off"
+            />
+
             <button
                     type="button"
                     class="btn btn-secondary"
                     data-bs-toggle="modal"
-                    data-bs-target="#scanComingSoonModal">
+                    data-bs-target="#barcodeModal">
                 📷 Scansiona
             </button>
-
         </div>
-        <small class="text-danger"
-               *ngIf="productForm.get('barcode')?.errors?.['minlength']">
-            Il barcode deve avere almeno 8 caratteri
+
+        <small *ngIf="loadingBarcode" class="text-info">
+            🔍 Ricerca prodotto...
         </small>
 
-        <small class="text-danger"
-               *ngIf="productForm.get('barcode')?.errors?.['maxlength']">
-            Il barcode non può superare i 13 caratteri
+        <small *ngIf="barcodeFound === true" class="text-success">
+            ✔ Prodotto trovato e compilato automaticamente
+        </small>
+
+        <small *ngIf="barcodeFound === false" class="text-warning">
+            ⚠ Nessun prodotto trovato, inserisci manualmente
         </small>
     </div>
 
-  <div class="form-group">
-    <label for="name">{{ 'PRODUCT.NAME' | translate }}</label>
-    <input id="name" formControlName="name" type="text" class="form-control" />
-    <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched" class="error">
-      {{ 'PRODUCT.NAME_REQUIRED' | translate }}
+    <!-- NOME -->
+    <div class="form-group">
+        <label>Nome</label>
+        <input id="name" formControlName="name" type="text" class="form-control" />
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="category">{{ 'PRODUCT.CATEGORY' | translate }}</label>
-    <select id="category" formControlName="category" class="form-control">
-      <option *ngFor="let category of categories" [value]="category._id">
-        {{ category.name }}
-      </option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="quantity">{{ 'PRODUCT.QUANTITY' | translate }}</label>
-    <div class="input-group">
-      <input
-        id="quantity"
-        formControlName="quantity"
-        type="number"
-        class="form-control"
-      />
-      <select
-        id="unit"
-        formControlName="unit"
-        class="form-control"
-      >
-        <option *ngFor="let unit of units" [value]="unit">{{ unit }}</option>
-      </select>
+    <!-- CATEGORIA -->
+    <div class="form-group">
+        <label>Categoria</label>
+        <select formControlName="category" class="form-control">
+            <option *ngFor="let c of categories" [value]="c._id">
+                {{ c.name }}
+            </option>
+        </select>
     </div>
-  </div>
 
-  <div class="form-group">
-    <label for="expiryDate">{{ 'PRODUCT.EXPIRY_DATE' | translate }}</label>
-    <input id="expiryDate" formControlName="expiryDate" type="date" class="form-control" />
-  </div>
+    <!-- QUANTITA -->
+    <div class="form-group">
+        <label>Quantità</label>
+        <div class="input-group">
+            <input type="number" formControlName="quantity" class="form-control" />
+            <select formControlName="unit" class="form-control">
+                <option *ngFor="let u of units" [value]="u">{{ u }}</option>
+            </select>
+        </div>
+    </div>
 
-  <div class="form-group">
-    <label for="fridgePosition">{{ 'PRODUCT.POSITION' | translate }}</label>
-    <select id="fridgePosition" formControlName="fridgePosition" class="form-control">
-      <option *ngFor="let fridgePosition of fridgePositions" [value]="fridgePosition._id">
-        {{ fridgePosition.name }} {{ fridgePosition.description }}
-      </option>
-    </select>
-  </div>
+    <!-- SCADENZA -->
+    <div class="form-group">
+        <label>Data Scadenza</label>
+        <input type="date" formControlName="expiryDate" class="form-control" />
+    </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">
-    {{ 'PRODUCT.SAVE' | translate }}
-  </button>
+    <!-- POSIZIONE -->
+    <div class="form-group">
+        <label>Posizione</label>
+        <select formControlName="fridgePosition" class="form-control">
+            <option *ngFor="let p of fridgePositions" [value]="p._id">
+                {{ p.name }} {{ p.description }}
+            </option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">
+        Salva
+    </button>
 </form>
 
+<!-- LISTA -->
 <table class="product-table" *ngIf="products.length > 0">
     <thead>
     <tr>
@@ -89,7 +95,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let product of products">
-        <td> {{ product.name }}</td>
+        <td>{{ product.name }}</td>
         <td>
             <button (click)="deleteProduct(product._id)">Elimina</button>
         </td>
@@ -101,29 +107,44 @@
     Nessun prodotto disponibile.
 </p>
 
-<!-- Modal -->
-<div class="modal fade" id="scanComingSoonModal" tabindex="-1">
+<!-- MODAL SCANNER -->
+<div class="modal fade" id="barcodeModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
             <div class="modal-header">
                 <h5 class="modal-title">Scanner Barcode</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button id="closeModalBtn" type="button" class="btn-close" data-bs-dismiss="modal" (click)="stopScanner()"></button>
             </div>
 
             <div class="modal-body text-center">
-                <h4>🚀 Funzionalità in arrivo</h4>
-                <p>La scansione del barcode sarà disponibile in una prossima versione. Inserire il codice da tastiera
-                    per codici sconosciuti inserire 0000000000000</p>
+
+                <video
+                        id="video-preview"
+                        style="width: 100%; border-radius: 8px;"
+                ></video>
+
+                <p *ngIf="!scanning">Premi "Avvia" per iniziare</p>
+                <p *ngIf="scanning" class="text-success">🔍 Scanner attivo...</p>
+
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-                    OK
+
+                <button class="btn btn-success" (click)="startScanner()" *ngIf="!scanning">
+                    ▶ Avvia
                 </button>
+
+                <button class="btn btn-danger" (click)="stopScanner()" *ngIf="scanning">
+                    ⏹ Stop
+                </button>
+
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="stopScanner()">
+                    Chiudi
+                </button>
+
             </div>
 
         </div>
     </div>
 </div>
-
